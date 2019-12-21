@@ -1,26 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// Third party
+import React, { Suspense } from "react"
+// Custom
+import { Loading } from "./Components/General"
+import Router from "./Routes/Router"
+import { lightTheme } from "./Styling/Themes"
+import GlobalStyles from "./Styling/GlobalStyles"
+import { ThemeProvider } from "styled-components"
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <ThemeProvider theme={lightTheme}>
+      <Suspense fallback={Loading}>
+        <GlobalStyles/>
+        <Router/>
+      </Suspense>
+    </ThemeProvider>
+  )
 }
 
-export default App;
+export default App
